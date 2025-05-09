@@ -178,6 +178,7 @@ class FileType(Enum):
     WORKOUT = 5
     COURSE = 6
     SCHEDULES = 7
+    LOCATIONS = 8
     WEIGHT = 9
     TOTALS = 10
     GOALS = 11
@@ -1607,6 +1608,7 @@ class GarminProduct(Enum):
     APPROACH_S12_ASIA = 3986
     APPROACH_G12_ASIA = 4001
     APPROACH_S42_ASIA = 4002
+    EDGE_EXPLORE_2 = 4169
     SDM4 = 10007
     EDGE_REMOTE = 10014
     TACX_TRAINING_APP_WIN = 20533
@@ -3916,3 +3918,9 @@ class RadarThreatLevelType(Enum):
     THREAT_NONE = 1
     THREAT_APPROACHING = 2
     THREAT_APPROACHING_FAST = 3
+
+
+class WaypointSettings(Enum):
+    ADD = 0
+    REPLACE = 1
+    DELETE_ALL = 2
