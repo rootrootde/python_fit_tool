@@ -7,7 +7,9 @@ from fit_tool.data_message import DataMessage
 from fit_tool.definition_message import DefinitionMessage
 from fit_tool.developer_field import DeveloperField
 from fit_tool.generic_message import GenericMessage
-from fit_tool.profile.messages.accelerometer_data_message import AccelerometerDataMessage
+from fit_tool.profile.messages.accelerometer_data_message import (
+    AccelerometerDataMessage,
+)
 from fit_tool.profile.messages.activity_message import ActivityMessage
 from fit_tool.profile.messages.ant_channel_id_message import AntChannelIdMessage
 from fit_tool.profile.messages.ant_rx_message import AntRxMessage
@@ -31,11 +33,19 @@ from fit_tool.profile.messages.dive_gas_message import DiveGasMessage
 from fit_tool.profile.messages.dive_settings_message import DiveSettingsMessage
 from fit_tool.profile.messages.dive_summary_message import DiveSummaryMessage
 from fit_tool.profile.messages.event_message import EventMessage
-from fit_tool.profile.messages.exd_data_concept_configuration_message import ExdDataConceptConfigurationMessage
-from fit_tool.profile.messages.exd_data_field_configuration_message import ExdDataFieldConfigurationMessage
-from fit_tool.profile.messages.exd_screen_configuration_message import ExdScreenConfigurationMessage
+from fit_tool.profile.messages.exd_data_concept_configuration_message import (
+    ExdDataConceptConfigurationMessage,
+)
+from fit_tool.profile.messages.exd_data_field_configuration_message import (
+    ExdDataFieldConfigurationMessage,
+)
+from fit_tool.profile.messages.exd_screen_configuration_message import (
+    ExdScreenConfigurationMessage,
+)
 from fit_tool.profile.messages.exercise_title_message import ExerciseTitleMessage
-from fit_tool.profile.messages.field_capabilities_message import FieldCapabilitiesMessage
+from fit_tool.profile.messages.field_capabilities_message import (
+    FieldCapabilitiesMessage,
+)
 from fit_tool.profile.messages.field_description_message import FieldDescriptionMessage
 from fit_tool.profile.messages.file_capabilities_message import FileCapabilitiesMessage
 from fit_tool.profile.messages.file_creator_message import FileCreatorMessage
@@ -59,7 +69,9 @@ from fit_tool.profile.messages.monitoring_message import MonitoringMessage
 from fit_tool.profile.messages.nmea_sentence_message import NmeaSentenceMessage
 from fit_tool.profile.messages.obdii_data_message import ObdiiDataMessage
 from fit_tool.profile.messages.ohr_settings_message import OhrSettingsMessage
-from fit_tool.profile.messages.one_d_sensor_calibration_message import OneDSensorCalibrationMessage
+from fit_tool.profile.messages.one_d_sensor_calibration_message import (
+    OneDSensorCalibrationMessage,
+)
 from fit_tool.profile.messages.power_zone_message import PowerZoneMessage
 from fit_tool.profile.messages.record_message import RecordMessage
 from fit_tool.profile.messages.schedule_message import ScheduleMessage
@@ -67,7 +79,9 @@ from fit_tool.profile.messages.sdm_profile_message import SdmProfileMessage
 from fit_tool.profile.messages.segment_file_message import SegmentFileMessage
 from fit_tool.profile.messages.segment_id_message import SegmentIdMessage
 from fit_tool.profile.messages.segment_lap_message import SegmentLapMessage
-from fit_tool.profile.messages.segment_leaderboard_entry_message import SegmentLeaderboardEntryMessage
+from fit_tool.profile.messages.segment_leaderboard_entry_message import (
+    SegmentLeaderboardEntryMessage,
+)
 from fit_tool.profile.messages.segment_point_message import SegmentPointMessage
 from fit_tool.profile.messages.session_message import SessionMessage
 from fit_tool.profile.messages.set_message import SetMessage
@@ -76,8 +90,12 @@ from fit_tool.profile.messages.software_message import SoftwareMessage
 from fit_tool.profile.messages.speed_zone_message import SpeedZoneMessage
 from fit_tool.profile.messages.sport_message import SportMessage
 from fit_tool.profile.messages.stress_level_message import StressLevelMessage
-from fit_tool.profile.messages.three_d_sensor_calibration_message import ThreeDSensorCalibrationMessage
-from fit_tool.profile.messages.timestamp_correlation_message import TimestampCorrelationMessage
+from fit_tool.profile.messages.three_d_sensor_calibration_message import (
+    ThreeDSensorCalibrationMessage,
+)
+from fit_tool.profile.messages.timestamp_correlation_message import (
+    TimestampCorrelationMessage,
+)
 from fit_tool.profile.messages.totals_message import TotalsMessage
 from fit_tool.profile.messages.training_file_message import TrainingFileMessage
 from fit_tool.profile.messages.user_profile_message import UserProfileMessage
@@ -86,9 +104,15 @@ from fit_tool.profile.messages.video_description_message import VideoDescription
 from fit_tool.profile.messages.video_frame_message import VideoFrameMessage
 from fit_tool.profile.messages.video_message import VideoMessage
 from fit_tool.profile.messages.video_title_message import VideoTitleMessage
-from fit_tool.profile.messages.watchface_settings_message import WatchfaceSettingsMessage
+from fit_tool.profile.messages.watchface_settings_message import (
+    WatchfaceSettingsMessage,
+)
+from fit_tool.profile.messages.waypoint_message import WaypointMessage
+from fit_tool.profile.messages.waypoint_settings_message import WaypointSettingsMessage
 from fit_tool.profile.messages.weather_alert_message import WeatherAlertMessage
-from fit_tool.profile.messages.weather_conditions_message import WeatherConditionsMessage
+from fit_tool.profile.messages.weather_conditions_message import (
+    WeatherConditionsMessage,
+)
 from fit_tool.profile.messages.weight_scale_message import WeightScaleMessage
 from fit_tool.profile.messages.workout_message import WorkoutMessage
 from fit_tool.profile.messages.workout_session_message import WorkoutSessionMessage
@@ -97,275 +121,453 @@ from fit_tool.profile.messages.zones_target_message import ZonesTargetMessage
 
 
 class MessageFactory:
-
     @staticmethod
-    def from_definition(definition_message: DefinitionMessage, developer_fields: list[DeveloperField]) -> DataMessage:
-
+    def from_definition(
+        definition_message: DefinitionMessage, developer_fields: list[DeveloperField]
+    ) -> DataMessage:
         if definition_message.global_id == FileIdMessage.ID:
-            return FileIdMessage(definition_message=definition_message, developer_fields=developer_fields)
+            return FileIdMessage(
+                definition_message=definition_message, developer_fields=developer_fields
+            )
 
         elif definition_message.global_id == FileCreatorMessage.ID:
-            return FileCreatorMessage(definition_message=definition_message, developer_fields=developer_fields)
+            return FileCreatorMessage(
+                definition_message=definition_message, developer_fields=developer_fields
+            )
 
         elif definition_message.global_id == TimestampCorrelationMessage.ID:
-            return TimestampCorrelationMessage(definition_message=definition_message, developer_fields=developer_fields)
+            return TimestampCorrelationMessage(
+                definition_message=definition_message, developer_fields=developer_fields
+            )
 
         elif definition_message.global_id == SoftwareMessage.ID:
-            return SoftwareMessage(definition_message=definition_message, developer_fields=developer_fields)
+            return SoftwareMessage(
+                definition_message=definition_message, developer_fields=developer_fields
+            )
 
         elif definition_message.global_id == SlaveDeviceMessage.ID:
-            return SlaveDeviceMessage(definition_message=definition_message, developer_fields=developer_fields)
+            return SlaveDeviceMessage(
+                definition_message=definition_message, developer_fields=developer_fields
+            )
 
         elif definition_message.global_id == CapabilitiesMessage.ID:
-            return CapabilitiesMessage(definition_message=definition_message, developer_fields=developer_fields)
+            return CapabilitiesMessage(
+                definition_message=definition_message, developer_fields=developer_fields
+            )
 
         elif definition_message.global_id == FileCapabilitiesMessage.ID:
-            return FileCapabilitiesMessage(definition_message=definition_message, developer_fields=developer_fields)
+            return FileCapabilitiesMessage(
+                definition_message=definition_message, developer_fields=developer_fields
+            )
 
         elif definition_message.global_id == MesgCapabilitiesMessage.ID:
-            return MesgCapabilitiesMessage(definition_message=definition_message, developer_fields=developer_fields)
+            return MesgCapabilitiesMessage(
+                definition_message=definition_message, developer_fields=developer_fields
+            )
 
         elif definition_message.global_id == FieldCapabilitiesMessage.ID:
-            return FieldCapabilitiesMessage(definition_message=definition_message, developer_fields=developer_fields)
+            return FieldCapabilitiesMessage(
+                definition_message=definition_message, developer_fields=developer_fields
+            )
 
         elif definition_message.global_id == DeviceSettingsMessage.ID:
-            return DeviceSettingsMessage(definition_message=definition_message, developer_fields=developer_fields)
+            return DeviceSettingsMessage(
+                definition_message=definition_message, developer_fields=developer_fields
+            )
 
         elif definition_message.global_id == UserProfileMessage.ID:
-            return UserProfileMessage(definition_message=definition_message, developer_fields=developer_fields)
+            return UserProfileMessage(
+                definition_message=definition_message, developer_fields=developer_fields
+            )
 
         elif definition_message.global_id == HrmProfileMessage.ID:
-            return HrmProfileMessage(definition_message=definition_message, developer_fields=developer_fields)
+            return HrmProfileMessage(
+                definition_message=definition_message, developer_fields=developer_fields
+            )
 
         elif definition_message.global_id == SdmProfileMessage.ID:
-            return SdmProfileMessage(definition_message=definition_message, developer_fields=developer_fields)
+            return SdmProfileMessage(
+                definition_message=definition_message, developer_fields=developer_fields
+            )
 
         elif definition_message.global_id == BikeProfileMessage.ID:
-            return BikeProfileMessage(definition_message=definition_message, developer_fields=developer_fields)
+            return BikeProfileMessage(
+                definition_message=definition_message, developer_fields=developer_fields
+            )
 
         elif definition_message.global_id == ConnectivityMessage.ID:
-            return ConnectivityMessage(definition_message=definition_message, developer_fields=developer_fields)
+            return ConnectivityMessage(
+                definition_message=definition_message, developer_fields=developer_fields
+            )
 
         elif definition_message.global_id == WatchfaceSettingsMessage.ID:
-            return WatchfaceSettingsMessage(definition_message=definition_message, developer_fields=developer_fields)
+            return WatchfaceSettingsMessage(
+                definition_message=definition_message, developer_fields=developer_fields
+            )
 
         elif definition_message.global_id == OhrSettingsMessage.ID:
-            return OhrSettingsMessage(definition_message=definition_message, developer_fields=developer_fields)
+            return OhrSettingsMessage(
+                definition_message=definition_message, developer_fields=developer_fields
+            )
 
         elif definition_message.global_id == ZonesTargetMessage.ID:
-            return ZonesTargetMessage(definition_message=definition_message, developer_fields=developer_fields)
+            return ZonesTargetMessage(
+                definition_message=definition_message, developer_fields=developer_fields
+            )
 
         elif definition_message.global_id == SportMessage.ID:
-            return SportMessage(definition_message=definition_message, developer_fields=developer_fields)
+            return SportMessage(
+                definition_message=definition_message, developer_fields=developer_fields
+            )
 
         elif definition_message.global_id == HrZoneMessage.ID:
-            return HrZoneMessage(definition_message=definition_message, developer_fields=developer_fields)
+            return HrZoneMessage(
+                definition_message=definition_message, developer_fields=developer_fields
+            )
 
         elif definition_message.global_id == SpeedZoneMessage.ID:
-            return SpeedZoneMessage(definition_message=definition_message, developer_fields=developer_fields)
+            return SpeedZoneMessage(
+                definition_message=definition_message, developer_fields=developer_fields
+            )
 
         elif definition_message.global_id == CadenceZoneMessage.ID:
-            return CadenceZoneMessage(definition_message=definition_message, developer_fields=developer_fields)
+            return CadenceZoneMessage(
+                definition_message=definition_message, developer_fields=developer_fields
+            )
 
         elif definition_message.global_id == PowerZoneMessage.ID:
-            return PowerZoneMessage(definition_message=definition_message, developer_fields=developer_fields)
+            return PowerZoneMessage(
+                definition_message=definition_message, developer_fields=developer_fields
+            )
 
         elif definition_message.global_id == MetZoneMessage.ID:
-            return MetZoneMessage(definition_message=definition_message, developer_fields=developer_fields)
+            return MetZoneMessage(
+                definition_message=definition_message, developer_fields=developer_fields
+            )
 
         elif definition_message.global_id == DiveSettingsMessage.ID:
-            return DiveSettingsMessage(definition_message=definition_message, developer_fields=developer_fields)
+            return DiveSettingsMessage(
+                definition_message=definition_message, developer_fields=developer_fields
+            )
 
         elif definition_message.global_id == DiveAlarmMessage.ID:
-            return DiveAlarmMessage(definition_message=definition_message, developer_fields=developer_fields)
+            return DiveAlarmMessage(
+                definition_message=definition_message, developer_fields=developer_fields
+            )
 
         elif definition_message.global_id == DiveGasMessage.ID:
-            return DiveGasMessage(definition_message=definition_message, developer_fields=developer_fields)
+            return DiveGasMessage(
+                definition_message=definition_message, developer_fields=developer_fields
+            )
 
         elif definition_message.global_id == GoalMessage.ID:
-            return GoalMessage(definition_message=definition_message, developer_fields=developer_fields)
+            return GoalMessage(
+                definition_message=definition_message, developer_fields=developer_fields
+            )
 
         elif definition_message.global_id == ActivityMessage.ID:
-            return ActivityMessage(definition_message=definition_message, developer_fields=developer_fields)
+            return ActivityMessage(
+                definition_message=definition_message, developer_fields=developer_fields
+            )
 
         elif definition_message.global_id == SessionMessage.ID:
-            return SessionMessage(definition_message=definition_message, developer_fields=developer_fields)
+            return SessionMessage(
+                definition_message=definition_message, developer_fields=developer_fields
+            )
 
         elif definition_message.global_id == LapMessage.ID:
-            return LapMessage(definition_message=definition_message, developer_fields=developer_fields)
+            return LapMessage(
+                definition_message=definition_message, developer_fields=developer_fields
+            )
 
         elif definition_message.global_id == LengthMessage.ID:
-            return LengthMessage(definition_message=definition_message, developer_fields=developer_fields)
+            return LengthMessage(
+                definition_message=definition_message, developer_fields=developer_fields
+            )
 
         elif definition_message.global_id == RecordMessage.ID:
-            return RecordMessage(definition_message=definition_message, developer_fields=developer_fields)
+            return RecordMessage(
+                definition_message=definition_message, developer_fields=developer_fields
+            )
 
         elif definition_message.global_id == EventMessage.ID:
-            return EventMessage(definition_message=definition_message, developer_fields=developer_fields)
+            return EventMessage(
+                definition_message=definition_message, developer_fields=developer_fields
+            )
 
         elif definition_message.global_id == DeviceInfoMessage.ID:
-            return DeviceInfoMessage(definition_message=definition_message, developer_fields=developer_fields)
+            return DeviceInfoMessage(
+                definition_message=definition_message, developer_fields=developer_fields
+            )
 
         elif definition_message.global_id == TrainingFileMessage.ID:
-            return TrainingFileMessage(definition_message=definition_message, developer_fields=developer_fields)
+            return TrainingFileMessage(
+                definition_message=definition_message, developer_fields=developer_fields
+            )
 
         elif definition_message.global_id == HrvMessage.ID:
-            return HrvMessage(definition_message=definition_message, developer_fields=developer_fields)
+            return HrvMessage(
+                definition_message=definition_message, developer_fields=developer_fields
+            )
 
         elif definition_message.global_id == WeatherConditionsMessage.ID:
-            return WeatherConditionsMessage(definition_message=definition_message, developer_fields=developer_fields)
+            return WeatherConditionsMessage(
+                definition_message=definition_message, developer_fields=developer_fields
+            )
 
         elif definition_message.global_id == WeatherAlertMessage.ID:
-            return WeatherAlertMessage(definition_message=definition_message, developer_fields=developer_fields)
+            return WeatherAlertMessage(
+                definition_message=definition_message, developer_fields=developer_fields
+            )
 
         elif definition_message.global_id == GpsMetadataMessage.ID:
-            return GpsMetadataMessage(definition_message=definition_message, developer_fields=developer_fields)
+            return GpsMetadataMessage(
+                definition_message=definition_message, developer_fields=developer_fields
+            )
 
         elif definition_message.global_id == CameraEventMessage.ID:
-            return CameraEventMessage(definition_message=definition_message, developer_fields=developer_fields)
+            return CameraEventMessage(
+                definition_message=definition_message, developer_fields=developer_fields
+            )
 
         elif definition_message.global_id == GyroscopeDataMessage.ID:
-            return GyroscopeDataMessage(definition_message=definition_message, developer_fields=developer_fields)
+            return GyroscopeDataMessage(
+                definition_message=definition_message, developer_fields=developer_fields
+            )
 
         elif definition_message.global_id == AccelerometerDataMessage.ID:
-            return AccelerometerDataMessage(definition_message=definition_message, developer_fields=developer_fields)
+            return AccelerometerDataMessage(
+                definition_message=definition_message, developer_fields=developer_fields
+            )
 
         elif definition_message.global_id == MagnetometerDataMessage.ID:
-            return MagnetometerDataMessage(definition_message=definition_message, developer_fields=developer_fields)
+            return MagnetometerDataMessage(
+                definition_message=definition_message, developer_fields=developer_fields
+            )
 
         elif definition_message.global_id == BarometerDataMessage.ID:
-            return BarometerDataMessage(definition_message=definition_message, developer_fields=developer_fields)
+            return BarometerDataMessage(
+                definition_message=definition_message, developer_fields=developer_fields
+            )
 
         elif definition_message.global_id == ThreeDSensorCalibrationMessage.ID:
-            return ThreeDSensorCalibrationMessage(definition_message=definition_message,
-                                                  developer_fields=developer_fields)
+            return ThreeDSensorCalibrationMessage(
+                definition_message=definition_message, developer_fields=developer_fields
+            )
 
         elif definition_message.global_id == OneDSensorCalibrationMessage.ID:
-            return OneDSensorCalibrationMessage(definition_message=definition_message,
-                                                developer_fields=developer_fields)
+            return OneDSensorCalibrationMessage(
+                definition_message=definition_message, developer_fields=developer_fields
+            )
 
         elif definition_message.global_id == VideoFrameMessage.ID:
-            return VideoFrameMessage(definition_message=definition_message, developer_fields=developer_fields)
+            return VideoFrameMessage(
+                definition_message=definition_message, developer_fields=developer_fields
+            )
 
         elif definition_message.global_id == ObdiiDataMessage.ID:
-            return ObdiiDataMessage(definition_message=definition_message, developer_fields=developer_fields)
+            return ObdiiDataMessage(
+                definition_message=definition_message, developer_fields=developer_fields
+            )
 
         elif definition_message.global_id == NmeaSentenceMessage.ID:
-            return NmeaSentenceMessage(definition_message=definition_message, developer_fields=developer_fields)
+            return NmeaSentenceMessage(
+                definition_message=definition_message, developer_fields=developer_fields
+            )
 
         elif definition_message.global_id == AviationAttitudeMessage.ID:
-            return AviationAttitudeMessage(definition_message=definition_message, developer_fields=developer_fields)
+            return AviationAttitudeMessage(
+                definition_message=definition_message, developer_fields=developer_fields
+            )
 
         elif definition_message.global_id == VideoMessage.ID:
-            return VideoMessage(definition_message=definition_message, developer_fields=developer_fields)
+            return VideoMessage(
+                definition_message=definition_message, developer_fields=developer_fields
+            )
 
         elif definition_message.global_id == VideoTitleMessage.ID:
-            return VideoTitleMessage(definition_message=definition_message, developer_fields=developer_fields)
+            return VideoTitleMessage(
+                definition_message=definition_message, developer_fields=developer_fields
+            )
 
         elif definition_message.global_id == VideoDescriptionMessage.ID:
-            return VideoDescriptionMessage(definition_message=definition_message, developer_fields=developer_fields)
+            return VideoDescriptionMessage(
+                definition_message=definition_message, developer_fields=developer_fields
+            )
 
         elif definition_message.global_id == VideoClipMessage.ID:
-            return VideoClipMessage(definition_message=definition_message, developer_fields=developer_fields)
+            return VideoClipMessage(
+                definition_message=definition_message, developer_fields=developer_fields
+            )
 
         elif definition_message.global_id == SetMessage.ID:
-            return SetMessage(definition_message=definition_message, developer_fields=developer_fields)
+            return SetMessage(
+                definition_message=definition_message, developer_fields=developer_fields
+            )
 
         elif definition_message.global_id == JumpMessage.ID:
-            return JumpMessage(definition_message=definition_message, developer_fields=developer_fields)
+            return JumpMessage(
+                definition_message=definition_message, developer_fields=developer_fields
+            )
 
         elif definition_message.global_id == CourseMessage.ID:
-            return CourseMessage(definition_message=definition_message, developer_fields=developer_fields)
+            return CourseMessage(
+                definition_message=definition_message, developer_fields=developer_fields
+            )
 
         elif definition_message.global_id == CoursePointMessage.ID:
-            return CoursePointMessage(definition_message=definition_message, developer_fields=developer_fields)
+            return CoursePointMessage(
+                definition_message=definition_message, developer_fields=developer_fields
+            )
 
         elif definition_message.global_id == SegmentIdMessage.ID:
-            return SegmentIdMessage(definition_message=definition_message, developer_fields=developer_fields)
+            return SegmentIdMessage(
+                definition_message=definition_message, developer_fields=developer_fields
+            )
 
         elif definition_message.global_id == SegmentLeaderboardEntryMessage.ID:
-            return SegmentLeaderboardEntryMessage(definition_message=definition_message,
-                                                  developer_fields=developer_fields)
+            return SegmentLeaderboardEntryMessage(
+                definition_message=definition_message, developer_fields=developer_fields
+            )
 
         elif definition_message.global_id == SegmentPointMessage.ID:
-            return SegmentPointMessage(definition_message=definition_message, developer_fields=developer_fields)
+            return SegmentPointMessage(
+                definition_message=definition_message, developer_fields=developer_fields
+            )
 
         elif definition_message.global_id == SegmentLapMessage.ID:
-            return SegmentLapMessage(definition_message=definition_message, developer_fields=developer_fields)
+            return SegmentLapMessage(
+                definition_message=definition_message, developer_fields=developer_fields
+            )
 
         elif definition_message.global_id == SegmentFileMessage.ID:
-            return SegmentFileMessage(definition_message=definition_message, developer_fields=developer_fields)
+            return SegmentFileMessage(
+                definition_message=definition_message, developer_fields=developer_fields
+            )
 
         elif definition_message.global_id == WorkoutMessage.ID:
-            return WorkoutMessage(definition_message=definition_message, developer_fields=developer_fields)
+            return WorkoutMessage(
+                definition_message=definition_message, developer_fields=developer_fields
+            )
 
         elif definition_message.global_id == WorkoutSessionMessage.ID:
-            return WorkoutSessionMessage(definition_message=definition_message, developer_fields=developer_fields)
+            return WorkoutSessionMessage(
+                definition_message=definition_message, developer_fields=developer_fields
+            )
 
         elif definition_message.global_id == WorkoutStepMessage.ID:
-            return WorkoutStepMessage(definition_message=definition_message, developer_fields=developer_fields)
+            return WorkoutStepMessage(
+                definition_message=definition_message, developer_fields=developer_fields
+            )
 
         elif definition_message.global_id == ExerciseTitleMessage.ID:
-            return ExerciseTitleMessage(definition_message=definition_message, developer_fields=developer_fields)
+            return ExerciseTitleMessage(
+                definition_message=definition_message, developer_fields=developer_fields
+            )
 
         elif definition_message.global_id == ScheduleMessage.ID:
-            return ScheduleMessage(definition_message=definition_message, developer_fields=developer_fields)
+            return ScheduleMessage(
+                definition_message=definition_message, developer_fields=developer_fields
+            )
 
         elif definition_message.global_id == TotalsMessage.ID:
-            return TotalsMessage(definition_message=definition_message, developer_fields=developer_fields)
+            return TotalsMessage(
+                definition_message=definition_message, developer_fields=developer_fields
+            )
 
         elif definition_message.global_id == WeightScaleMessage.ID:
-            return WeightScaleMessage(definition_message=definition_message, developer_fields=developer_fields)
+            return WeightScaleMessage(
+                definition_message=definition_message, developer_fields=developer_fields
+            )
 
         elif definition_message.global_id == BloodPressureMessage.ID:
-            return BloodPressureMessage(definition_message=definition_message, developer_fields=developer_fields)
+            return BloodPressureMessage(
+                definition_message=definition_message, developer_fields=developer_fields
+            )
 
         elif definition_message.global_id == MonitoringInfoMessage.ID:
-            return MonitoringInfoMessage(definition_message=definition_message, developer_fields=developer_fields)
+            return MonitoringInfoMessage(
+                definition_message=definition_message, developer_fields=developer_fields
+            )
 
         elif definition_message.global_id == MonitoringMessage.ID:
-            return MonitoringMessage(definition_message=definition_message, developer_fields=developer_fields)
+            return MonitoringMessage(
+                definition_message=definition_message, developer_fields=developer_fields
+            )
 
         elif definition_message.global_id == HrMessage.ID:
-            return HrMessage(definition_message=definition_message, developer_fields=developer_fields)
+            return HrMessage(
+                definition_message=definition_message, developer_fields=developer_fields
+            )
 
         elif definition_message.global_id == StressLevelMessage.ID:
-            return StressLevelMessage(definition_message=definition_message, developer_fields=developer_fields)
+            return StressLevelMessage(
+                definition_message=definition_message, developer_fields=developer_fields
+            )
 
         elif definition_message.global_id == MemoGlobMessage.ID:
-            return MemoGlobMessage(definition_message=definition_message, developer_fields=developer_fields)
+            return MemoGlobMessage(
+                definition_message=definition_message, developer_fields=developer_fields
+            )
 
         elif definition_message.global_id == AntChannelIdMessage.ID:
-            return AntChannelIdMessage(definition_message=definition_message, developer_fields=developer_fields)
+            return AntChannelIdMessage(
+                definition_message=definition_message, developer_fields=developer_fields
+            )
 
         elif definition_message.global_id == AntRxMessage.ID:
-            return AntRxMessage(definition_message=definition_message, developer_fields=developer_fields)
+            return AntRxMessage(
+                definition_message=definition_message, developer_fields=developer_fields
+            )
 
         elif definition_message.global_id == AntTxMessage.ID:
-            return AntTxMessage(definition_message=definition_message, developer_fields=developer_fields)
+            return AntTxMessage(
+                definition_message=definition_message, developer_fields=developer_fields
+            )
 
         elif definition_message.global_id == ExdScreenConfigurationMessage.ID:
-            return ExdScreenConfigurationMessage(definition_message=definition_message,
-                                                 developer_fields=developer_fields)
+            return ExdScreenConfigurationMessage(
+                definition_message=definition_message, developer_fields=developer_fields
+            )
 
         elif definition_message.global_id == ExdDataFieldConfigurationMessage.ID:
-            return ExdDataFieldConfigurationMessage(definition_message=definition_message,
-                                                    developer_fields=developer_fields)
+            return ExdDataFieldConfigurationMessage(
+                definition_message=definition_message, developer_fields=developer_fields
+            )
 
         elif definition_message.global_id == ExdDataConceptConfigurationMessage.ID:
-            return ExdDataConceptConfigurationMessage(definition_message=definition_message,
-                                                      developer_fields=developer_fields)
+            return ExdDataConceptConfigurationMessage(
+                definition_message=definition_message, developer_fields=developer_fields
+            )
 
         elif definition_message.global_id == FieldDescriptionMessage.ID:
-            return FieldDescriptionMessage(definition_message=definition_message, developer_fields=developer_fields)
+            return FieldDescriptionMessage(
+                definition_message=definition_message, developer_fields=developer_fields
+            )
 
         elif definition_message.global_id == DeveloperDataIdMessage.ID:
-            return DeveloperDataIdMessage(definition_message=definition_message, developer_fields=developer_fields)
+            return DeveloperDataIdMessage(
+                definition_message=definition_message, developer_fields=developer_fields
+            )
 
         elif definition_message.global_id == DiveSummaryMessage.ID:
-            return DiveSummaryMessage(definition_message=definition_message, developer_fields=developer_fields)
+            return DiveSummaryMessage(
+                definition_message=definition_message, developer_fields=developer_fields
+            )
 
         elif definition_message.global_id == ClimbProMessage.ID:
-            return ClimbProMessage(definition_message=definition_message, developer_fields=developer_fields)
+            return ClimbProMessage(
+                definition_message=definition_message, developer_fields=developer_fields
+            )
+        elif definition_message.global_id == WaypointSettingsMessage.ID:
+            return WaypointSettingsMessage(
+                definition_message=definition_message, developer_fields=developer_fields
+            )
+        elif definition_message.global_id == WaypointMessage.ID:
+            return WaypointMessage(
+                definition_message=definition_message, developer_fields=developer_fields
+            )
         else:
-            return GenericMessage(definition_message=definition_message, developer_fields=developer_fields)
+            return GenericMessage(
+                definition_message=definition_message, developer_fields=developer_fields
+            )
