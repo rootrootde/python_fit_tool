@@ -1,0 +1,36 @@
+I am working on a app with python and qt6 (pyside6) that deals with a special type of garmin FIT files: Locations.fit
+this is a file where garmin gps devices save "favorite waypoints" in.
+I found a python lib (python_fit_tool) to read and write FIT files and customized it to support Locations.fit files.
+
+location_tool.py is an example of how to use the lib to write Locations.fit files.
+in fittol/examples/read_activity_example.py you can see how to read FIT files.
+
+the library README can be found here: https://bitbucket.org/stagescycling/python_fit_tool/raw/f385648ef7e05097958f53edb82ad221a0e428f3/README.md
+
+first, I want an example of how to use the library to READ Locations.fit files. give me the code for that.
+
+
+
+-----
+
+
+I want a gui tool with pyside6 that allows the user to read, write and modify Locations.fit files.
+
+the gui tool should have these functions:
+
+- import and export of Locations.fit FIT files
+- displaying Locations.fit file content in a table
+- removing waypoints
+- adding waypoints
+- changing waypoints
+- import/export from/to GPX
+- nice to have: for windows users, garmin devices are mounted as a device, so direct access to Locations.fit from the device could be possible
+
+the ui is already prepared by me via qt designer (gui/main_window.ui) - and also compiled into the gui/ui_main_window.py file
+several actions are already prepared in the ui file (name ends with "_action"), but not implemented yet.
+
+please give me the code for the application
+- slots should begin with "slot_": slot_foo_function()....
+- qt widgets / items are named in snake_case with the "type" at the end: open_file_action, filelist_table, confirm_btn, ...
+
+try not to do everything in one script file, dont be afraid to structure the code into multiple files / classes/ modules

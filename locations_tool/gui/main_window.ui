@@ -1,0 +1,220 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>800</width>
+    <height>700</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>FIT Locations Editor</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <layout class="QVBoxLayout" name="main_layout">
+    <item>
+     <widget class="QTabWidget" name="tab_widget">
+      <property name="currentIndex">
+       <number>0</number>
+      </property>
+      <widget class="QWidget" name="file_info_tab">
+       <attribute name="title">
+        <string>File Info</string>
+       </attribute>
+       <layout class="QVBoxLayout" name="file_info_layout">
+        <item>
+         <widget class="QGroupBox" name="file_id_groupbox">
+          <property name="title">
+           <string>File ID</string>
+          </property>
+          <layout class="QFormLayout" name="file_id_form_layout">
+           <!-- QLineEdit/QComboBox for File ID fields will be added here by code -->
+          </layout>
+         </widget>
+        </item>
+        <item>
+         <widget class="QGroupBox" name="file_creator_groupbox">
+          <property name="title">
+           <string>File Creator</string>
+          </property>
+          <layout class="QFormLayout" name="file_creator_form_layout">
+           <!-- QLineEdit for File Creator fields will be added here by code -->
+          </layout>
+         </widget>
+        </item>
+        <item>
+         <widget class="QGroupBox" name="location_settings_groupbox">
+          <property name="title">
+           <string>Location Settings</string>
+          </property>
+          <layout class="QFormLayout" name="location_settings_form_layout">
+           <!-- QComboBox for Location Settings field will be added here by code -->
+          </layout>
+         </widget>
+        </item>
+        <item>
+         <spacer name="file_info_spacer">
+          <property name="orientation">
+           <enum>Qt::Vertical</enum>
+          </property>
+          <property name="sizeHint" stdset="0">
+           <size>
+            <width>20</width>
+            <height>40</height>
+           </size>
+          </property>
+         </spacer>
+        </item>
+       </layout>
+      </widget>
+      <widget class="QWidget" name="waypoints_tab">
+       <attribute name="title">
+        <string>Waypoints</string>
+       </attribute>
+       <layout class="QHBoxLayout" name="waypoints_main_layout">
+        <item>
+         <widget class="QTableWidget" name="waypoints_table_widget">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+            <horstretch>2</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
+          <property name="selectionMode">
+           <enum>QAbstractItemView::SingleSelection</enum>
+          </property>
+          <property name="selectionBehavior">
+           <enum>QAbstractItemView::SelectRows</enum>
+          </property>
+          <column>
+           <property name="text">
+            <string>Index</string>
+           </property>
+          </column>
+          <column>
+           <property name="text">
+            <string>Name</string>
+           </property>
+          </column>
+          <column>
+           <property name="text">
+            <string>Latitude</string>
+           </property>
+          </column>
+          <column>
+           <property name="text">
+            <string>Longitude</string>
+           </property>
+          </column>
+         </widget>
+        </item>
+        <item>
+         <layout class="QVBoxLayout" name="waypoints_edit_layout">
+          <property name="sizeConstraint">
+           <enum>QLayout::SetDefaultConstraint</enum>
+          </property>
+          <item>
+           <widget class="QGroupBox" name="waypoint_details_groupbox">
+            <property name="title">
+             <string>Waypoint Details</string>
+            </property>
+            <layout class="QFormLayout" name="waypoint_details_form_layout">
+             <!-- QLineEdit/QDoubleSpinBox etc. for selected waypoint -->
+            </layout>
+           </widget>
+          </item>
+          <item>
+           <layout class="QHBoxLayout" name="waypoint_buttons_layout">
+            <item>
+             <widget class="QPushButton" name="add_waypoint_btn">
+              <property name="text">
+               <string>Add New</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QPushButton" name="delete_waypoint_btn">
+              <property name="text">
+               <string>Delete Selected</string>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </item>
+          <item>
+           <widget class="QPushButton" name="save_waypoint_changes_btn">
+            <property name="text">
+             <string>Apply Changes to Waypoint</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <spacer name="waypoints_edit_spacer">
+            <property name="orientation">
+             <enum>Qt::Vertical</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>20</width>
+              <height>40</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+         </layout>
+        </item>
+       </layout>
+      </widget>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QStatusBar" name="statusbar"/>
+  <widget class="QToolBar" name="toolBar">
+   <property name="windowTitle">
+    <string>toolBar</string>
+   </property>
+   <attribute name="toolBarArea">
+    <enum>TopToolBarArea</enum>
+   </attribute>
+   <attribute name="toolBarBreak">
+    <bool>false</bool>
+   </attribute>
+   <addaction name="open_locations_file_action"/>
+   <addaction name="save_new_locations_file_action"/>
+   <addaction name="actionImportGPX"/>
+   <addaction name="actionExportGPX"/>
+  </widget>
+  <action name="open_locations_file_action">
+   <property name="text">
+    <string>Open FIT</string>
+   </property>
+   <property name="toolTip">
+    <string>Open Locations.fit File</string>
+   </property>
+  </action>
+  <action name="save_new_locations_file_action">
+   <property name="text">
+    <string>Save FIT</string>
+   </property>
+   <property name="toolTip">
+    <string>Save as new Locations.fit File</string>
+   </property>
+  </action>
+  <action name="actionImportGPX">
+   <property name="text">
+    <string>Import GPX</string>
+   </property>
+  </action>
+  <action name="actionExportGPX">
+   <property name="text">
+    <string>Export GPX</string>
+   </property>
+  </action>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

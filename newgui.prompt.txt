@@ -1,0 +1,47 @@
+
+I made a new GUI for the app - gui/new_main_window.ui , already compiled to gui/ui_new_main_window.ui
+
+at the top are 3 buttons and a combobox:
+import_locations_fit_btn - clicked() signal connected to import_locations_fit_action
+    - this will import a .fit file, extract the waypoints from it and add it into waypoint_table
+
+import_gpx_btn - clicked() signal connected to import_gpx_action
+    - this will extract all waypoints from a gpx file and add them to waypoint_table
+save_locations_fit_btn - clicked() signal connected to save_locations_fit_action
+    - this will write the new Locations.fit file with the waypoint data from the table - 
+
+location_settings_combo
+    - this is the "location setting" for the LocationSettings message in the newly created Locations.fit file
+
+
+then there is the waypoint_table
+    - this is a QTableWidget and should have the following columns:
+        - index/number
+        - name
+        - latitude
+        - longitude
+        - elevation
+        - timestamp
+        - symbol (only the symbol name for now, we can add the icon later)
+        - descriptiom
+
+below the table are 3 buttons:
+add_wpt_btn - clicked() signal connected to add_wpt_action
+    - this will add a new waypoint to the table, with sensible default values
+    - the user can then edit the values directly in the table! use fitting widgets if possible
+remove_wpt_btn - clicked() signal connected to remove_wpt_action
+    - this will remove the selected waypoint from the table
+    - if no waypoint is selected, do nothing
+    - after deleting, select next waypoint in the table
+remove_all_wpts_btn - clicked() signal connected to remove_all_wpts_action
+    - this will remove all waypoints from the table
+    - ask the user for confirmation before deleting
+    - if the user cancels, do nothing
+
+right now the old GUI is used in the code, you can alway looks into main_window.ui and ui_main_window.py to check how the old GUI works
+as the buttons are already "wired" to the actions, please use the actions, connect them to slots, name them e.g. slot_add_gpx, slot_import_locations_fit etc.
+
+fit_handler.py handles the import/export of the fit files, adjust the code to use the new GUI if necessary
+
+previously, the user could also set parameters for the fileId  and file creator message (serial number, product etc.)
+use hardcoded defaults for now, the function to customize these messages comes later

@@ -1,6 +1,9 @@
 import argparse
 import os
 from pathlib import Path
+import sys  # Hinzugefügt
+
+
 
 import inflection
 import jinja2
@@ -10,7 +13,7 @@ from fit_tool.base_type import BaseType
 from fit_tool.field import Field
 from fit_tool.gen.profile import Profile, Message
 
-DEFAULT_BUILD_PATH = '../../build'
+DEFAULT_BUILD_PATH = '../build'
 
 
 def parse_args():
@@ -196,6 +199,7 @@ def main():
     profile.type_class_name_by_name = {k: convert_type_name(k) for k in profile.types_by_name.keys()}
 
     for message in profile.messages_by_name.values():
+        print(message.name)
         message.field_class_name_by_name = {k: field_name_to_class_name(message, message.fields_by_name[k], k) for k in
                                             message.fields_by_name.keys()}
         message.field_property_name_by_name = {k: field_name_to_property_name(message, k) for k in
@@ -217,7 +221,13 @@ def main():
         profile_type = profile.types_by_name[k]
         profile_type.values_by_name = {convert_value_name(k): v for k, v in profile_type.values_by_name.items()}
 
-    env = jinja2.Environment(loader=jinja2.FileSystemLoader('..'), )
+    # Pfad zum Verzeichnis, das den 'gen'-Ordner für die Templates enthält (relativ zur Skriptdatei)
+    # __file__ ist der Pfad zur aktuellen Datei (gen_profile.py)
+    # os.path.dirname(__file__) ist das Verzeichnis '.../fit_tool/gen/'
+    # os.path.join(os.path.dirname(__file__), '..') ist das Verzeichnis '.../fit_tool/'
+    # Dies ist der Basispfad, den Jinja2 benötigt, um 'gen/templates/...' zu finden.
+    template_search_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), '..')
+    env = jinja2.Environment(loader=jinja2.FileSystemLoader(template_search_path))
 
     #
     # Gen profile_type.py
@@ -235,6 +245,7 @@ def main():
                                     class_name=inflection.camelize(message.name + '_message'),
                                     message=message)
         filename = os.path.join(messages_path, f"{inflection.underscore(message.name + '_message')}.py")
+        print(filename)
         with (open(filename, 'w')) as file_out:
             file_out.write(rendering)
 
